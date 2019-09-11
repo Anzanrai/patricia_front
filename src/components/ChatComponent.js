@@ -3,9 +3,14 @@ import {addResponseMessage, Chat} from "react-chat-popup";
 import {CHAT_API_URL} from "../constants";
 
 class ChatComponent extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            username : this.props.username
+        }
+    }
     componentDidMount() {
-
-        addResponseMessage("Hi! This is Patricia. How can I help you today?");
+        addResponseMessage(`Hi ${this.state.username}! This is Patricia. How can I help you today?`);
     }
 
     handleNewUserMessage = (newMessage) => {
@@ -21,6 +26,7 @@ class ChatComponent extends React.Component {
                 message: newMessage
             }),
         }).then(response => response.json()).then(res => {
+            console.log(res);
             let responseMessage = res[0]['text'];
             console.log(responseMessage);
             addResponseMessage(responseMessage);

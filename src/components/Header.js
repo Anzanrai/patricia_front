@@ -1,22 +1,20 @@
 import React from 'react'
-// import {Redirect} from "react-router";
-// import LoginPage from "./LoginPage";
 import {Link} from "react-router-dom";
+import {API_URL} from "../constants";
+import {withRouter} from "react-router-dom";
 // import {Button} from 'react-bootstrap'
 
 class Header extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedIn: false,
             imageSource: '/patricia_front/src/images/Logo.png',
-            style : {
-
-            }
+            authenticated: !!localStorage.getItem('user'),
+            userType: 'non_staff'
         }
     }
     renderRegisterButton(){
-        if(this.state.loggedIn){
+        if(this.state.authenticated){
             return ""
         } else {
             return (<Link to="/register" style={{textDecoration: 'none', color: 'white'}}>
@@ -27,10 +25,31 @@ class Header extends React.Component {
         }
     }
 
+    logout = () => {
+        let token = localStorage.getItem('token');
+        fetch(API_URL+'logout/', {
+            method: 'post',
+            headers: new Headers({
+                'Authorization': 'Token '+token,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }),
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(body => {
+                localStorage.clear();
+                this.props.history.push('/');
+        })
+            .catch(error=> {
+                console.log(error);
+        });
+    }
+
     renderHeaderButton(){
-        if(this.state.loggedIn){
+        if(this.state.authenticated){
             return (
-                <button className={'headerButtonStyle'}>Logout</button>
+                <button className={'headerButtonStyle'} onClick={this.logout}>Logout</button>
             )
         } else {
             return (
@@ -48,6 +67,7 @@ class Header extends React.Component {
     render() {
         // let {style} = this.state;
         const logo = require('../images/Logo.png');
+        console.log(localStorage.getItem('user')==="null");
         return (
             <div className={'headerContainer'}>
                 <div>
@@ -66,4 +86,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

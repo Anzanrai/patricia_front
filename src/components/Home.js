@@ -1,10 +1,7 @@
 import React from 'react'
 import Header from "./Header";
-// import Footer from "./Footer";
 import Body from "./Body";
-// import FooterBar from "./FooterBar";
 import Footer from "./Footer";
-// import Login from "./LoginFormComponent";
 
 class Home extends React.Component{
     constructor(props){
@@ -13,7 +10,6 @@ class Home extends React.Component{
             style : {
                 homeBackgroundStyle: {
                     imageURL : "/home/unknownDevil/Documents/patricia_front/src/images/botImage.jpg",
-                    // backgroundImage : `url(${this.state.style.imageURL})`,
                 }
             }
         }
@@ -21,7 +17,7 @@ class Home extends React.Component{
 
     render() {
         return(
-            <div className={'home-bg'}>
+            <div>
                 <Header/>
                 <Body/>
                 <Footer/>

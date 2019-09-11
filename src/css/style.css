@@ -53,7 +53,7 @@
     background-color: #20a3b2;
     height: 150px;
     width: 350px;
-    color: white;
+    color: #ccffff;
     /*box-shadow: 2px 2px black;*/
 }
 
@@ -80,20 +80,25 @@
     z-index: 100;
 }
 
+.footer-container {
+    height: 80px;
+}
+
 .footer-bar {
     background-color: #20a3b2;
-    position: fixed;
-    bottom: 72px;
-    left: 5%;
+    /*position: fixed;*/
+    /*bottom: 72px;*/
+    margin-left: 5%;
     width: 90%;
     height: 2px;
 
 }
 
 .footer-content-container {
-    position: fixed;
-    bottom: 45px;
-    left: 6%;
+    /*position: fixed;*/
+    /*bottom: 45px;*/
+    padding-top: 10px;
+    margin-left: 6%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -112,5 +117,34 @@
     width: 350px;
     box-shadow: 1px 1px black;
     padding: 20px 50px;
+    color: #ccffff;
+}
+
+.warning-message {
+    font-size: 12px;
     color: white;
+}
+
+.home-content-container {
+    background-image: url("../images/botImage.jpg");
+    background-size: auto;
+    /*min-height: 89vh;*/
+    /*max-height: 100vh;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    min-height: 519px;
+}
+
+.login-page-body {
+    min-height: 438px;
+}
+
+.bannerStyleContainer {
+    padding-left: 50px;
+}
+
+.bannerStyle {
+    color: #20a3b2;
+    font-weight: bold;
 }

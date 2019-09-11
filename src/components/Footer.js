@@ -39,7 +39,7 @@ class Footer extends React.Component{
     render(){
         // let {style} = this.state;
         return(
-            <div>
+            <div className={'footer-container'}>
                 <FooterBar/>
                 <div className={'footer-content-container'}>
                     <span className={'footer-content'}>Product</span>
